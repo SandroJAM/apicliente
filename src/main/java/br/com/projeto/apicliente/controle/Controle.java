@@ -15,7 +15,12 @@ public class Controle {
     
     @Autowired
     private Repositorio acao;
-    
+
+    @PostMapping("/api")
+    public Pessoa cadastrar(@RequestBody Pessoa objPessoa){
+        return acao.save(objPessoa);
+    }
+
     @GetMapping
     public String mensagem(){
         return "Hello World!";

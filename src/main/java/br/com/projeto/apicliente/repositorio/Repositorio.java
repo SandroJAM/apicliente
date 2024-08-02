@@ -11,4 +11,5 @@ import br.com.projeto.apicliente.modelo.Pessoa;
 public interface Repositorio extends CrudRepository<Pessoa, Integer> {
     
     List<Pessoa> findAll();
+    Pessoa findByCodigo(int codigo);
 }

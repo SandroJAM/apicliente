@@ -76,6 +76,11 @@ public class Controle {
         return acao.findByNomeEndsWith("a");
     }
 
+    @GetMapping("/api/somaIdades")
+    public int somaIdades(){
+        return acao.somaIdades();
+    }
+
     @GetMapping
     public String mensagem() {
         return "Hello World!";

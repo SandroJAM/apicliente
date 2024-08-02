@@ -1,7 +1,6 @@
 package br.com.projeto.apicliente.repositorio;
 
 import java.util.List;
-
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,4 +13,5 @@ public interface Repositorio extends CrudRepository<Pessoa, Integer> {
     Pessoa findByCodigo(int codigo);
     List<Pessoa> findByOrderByNome();
     List<Pessoa> findByNomeOrderByIdadeDesc(String nome);
+    List<Pessoa> findByNomeContaining(String termo);
 }

@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.projeto.apicliente.modelo.Cliente;
 import br.com.projeto.apicliente.modelo.Pessoa;
 import br.com.projeto.apicliente.repositorio.Repositorio;
 import br.com.projeto.apicliente.servico.Servico;
+import jakarta.validation.Valid;
 
 @RestController
 public class Controle {
@@ -75,6 +77,11 @@ public class Controle {
     @DeleteMapping("/api/{codigo}")
     public ResponseEntity<?> remover(@PathVariable int codigo){
         return servico.remover(codigo);
+    }
+
+    @PostMapping("/cliente")
+    public void cliente(@Valid @RequestBody Cliente objCliente){
+        
     }
 
     /* --------------------------------------------------------------------------------- */

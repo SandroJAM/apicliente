@@ -36,9 +36,14 @@ public class Controle {
         return servico.cadastrar(objPessoa);
     }
 
-    @GetMapping("/api")
+    /*@GetMapping("/api")
     public List<Pessoa> selecionar() {
         return acao.findAll();
+    }*/
+
+    @GetMapping("/api")
+    public ResponseEntity<?> selecionar(){
+        return servico.selecionar();
     }
 
     @GetMapping("/api/{codigo}")

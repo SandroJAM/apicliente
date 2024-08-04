@@ -46,21 +46,28 @@ public class Controle {
         return servico.selecionar();
     }
 
-    @GetMapping("/api/{codigo}")
-    public Pessoa selecionarpeloCodigo(@PathVariable int codigo) {
+    /*@GetMapping("/api/{codigo}")
+    public Pessoa selecionarPeloCodigo(@PathVariable int codigo) {
         return acao.findByCodigo(codigo);
+    }*/
+
+    @GetMapping("/api/{codigo}")
+    public ResponseEntity<?> selecionarPeloCodigo(@PathVariable int codigo){
+        return servico.selecionarPeloCodigo(codigo);
     }
 
     @PutMapping("/api")
-    public Pessoa editar(@RequestBody Pessoa objPessoa) {
+    public Pessoa editar(@RequestBody Pessoa objPessoa){
         return acao.save(objPessoa);
     }
 
     @DeleteMapping("/api/{codigo}")
     public void remover(@PathVariable int codigo) {
-        Pessoa objPessoa = selecionarpeloCodigo(codigo);
-        acao.delete(objPessoa);
+        // Pessoa objPessoa = selecionarPeloCodigo(codigo);
+        // acao.delete(objPessoa);
     }
+
+    /* --------------------------------------------------------------------------------- */
 
     @GetMapping("/api/contador")
     public long contador() {

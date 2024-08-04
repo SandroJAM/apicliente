@@ -47,4 +47,20 @@ public class Servico {
         }
     }
 
+    // Método para editar dados
+    public ResponseEntity<?> editar(Pessoa objPessoa){
+        if(acao.countByCodigo(objPessoa.getCodigo()) == 0){
+            mensagem.setMensagem("O código informado não existe!");
+            return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
+        }else if(objPessoa.getNome().equals("")){
+            mensagem.setMensagem("É necessário informar o nome!");
+            return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
+        }else if(objPessoa.getIdade() < 0){
+            mensagem.setMensagem("Informe uma idade válida!");
+            return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
+        }else{
+            return new ResponseEntity<>(acao.save(objPessoa), HttpStatus.OK);
+        }
+    }
+
 }

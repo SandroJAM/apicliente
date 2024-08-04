@@ -56,9 +56,14 @@ public class Controle {
         return servico.selecionarPeloCodigo(codigo);
     }
 
-    @PutMapping("/api")
+    /*@PutMapping("/api")
     public Pessoa editar(@RequestBody Pessoa objPessoa){
         return acao.save(objPessoa);
+    }*/
+
+    @PutMapping("/api")
+    public ResponseEntity<?> editar(@RequestBody Pessoa objPessoa){
+        return servico.editar(objPessoa);
     }
 
     @DeleteMapping("/api/{codigo}")

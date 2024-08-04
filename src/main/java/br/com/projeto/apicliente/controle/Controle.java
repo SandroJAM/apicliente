@@ -66,10 +66,15 @@ public class Controle {
         return servico.editar(objPessoa);
     }
 
-    @DeleteMapping("/api/{codigo}")
+    /*@DeleteMapping("/api/{codigo}")
     public void remover(@PathVariable int codigo) {
         // Pessoa objPessoa = selecionarPeloCodigo(codigo);
         // acao.delete(objPessoa);
+    }*/
+
+    @DeleteMapping("/api/{codigo}")
+    public ResponseEntity<?> remover(@PathVariable int codigo){
+        return servico.remover(codigo);
     }
 
     /* --------------------------------------------------------------------------------- */

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.projeto.apicliente.modelo.Pessoa;
 import br.com.projeto.apicliente.repositorio.Repositorio;
+import br.com.projeto.apicliente.servico.Servico;
 
 @RestController
 public class Controle {
@@ -22,9 +23,17 @@ public class Controle {
     @Autowired
     private Repositorio acao;
 
-    @PostMapping("/api")
+    @Autowired
+    private Servico servico;
+
+    /*@PostMapping("/api")
     public Pessoa cadastrar(@RequestBody Pessoa objPessoa) {
         return acao.save(objPessoa);
+    }*/
+
+    @PostMapping("/api")
+    public ResponseEntity<?> cadastrar(@RequestBody Pessoa objPessoa){
+        return servico.cadastrar(objPessoa);
     }
 
     @GetMapping("/api")
@@ -97,6 +106,8 @@ public class Controle {
     public ResponseEntity<?> status(){
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
+    /* --------------------------------------------------------------------------------- */
 
     @GetMapping
     public String mensagem() {
